@@ -59,7 +59,7 @@ docker container rm <nombre del contenedor>
 (Equivalente: docker rm <nombre del contenedor>)
 
 ### Descargar una imagen, crear un contenedor y arrancarlo TODO EN UNO 
-docker run -d --name <nombre del contenedor> <nombre de la imagen>:<version>
+docker run -d --name <PARAMETROS> <nombre del contenedor> <nombre de la imagen>:<version>
     El parametro -d, no muestra el log
     
 ### Para sacar el log de un programa corriendo en un contenedor
@@ -68,4 +68,14 @@ docker logs <nombre del contenedor>
 ### Para ejecutar un comando dentro de un contenedor
 docker exec <PARAMETROS> <nombre del contenedor> <comando que quiero ejecutar>
 Entre los parametros el más importantes es:
- -it <--- terminal interactiva
+ -it < terminal interactiva >
+ 
+### Para saber en que IP se ejecuta un contnedor:
+docker inspect <nombre del contenedor>
+                                        Puerto en el contenedor
+                                        v
+docker run -d --name MITOMCAT -p 8080:8080 tomcat
+                                  ^     
+                                MAQUINA HOST
+                                
+docker run -d --name MINGINX -p 8081:80 nginx
