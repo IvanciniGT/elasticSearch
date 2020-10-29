@@ -1,0 +1,11 @@
+version: '3.5'
+
+services: # Contenedores
+
+    nodo1:
+        image: elasticsearch:7.9.3
+        container_name: MI_ELASTIC
+        ports:
+            - 8080:9200
+        environment:
+            - discovery.type=single-node

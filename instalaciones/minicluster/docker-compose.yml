@@ -1,0 +1,41 @@
+version: '3.5'
+services: # Contenedores
+    nodo1:
+        image: elasticsearch:7.9.3
+        container_name: nodo1
+        ports:
+            - 8080:9200
+        environment:
+            - node.name=nodo1
+            - cluster.name=MiniCluster
+            - cluster.initial_master_nodes=nodo1,nodo2,nodo3
+            - discovery.seed_hosts=nodo2,nodo3
+    nodo2:
+        image: elasticsearch:7.9.3
+        container_name: nodo2
+        environment:
+            - node.name=nodo2
+            - cluster.name=MiniCluster
+            - cluster.initial_master_nodes=nodo1,nodo2,nodo3
+            - discovery.seed_hosts=nodo1,nodo3
+    nodo3:
+        image: elasticsearch:7.9.3
+        container_name: nodo3
+        environment:
+            - node.name=nodo3
+            - cluster.name=MiniCluster
+            - cluster.initial_master_nodes=nodo1,nodo2,nodo3
+            - discovery.seed_hosts=nodo1,nodo2
+    cerebro:
+        image: lmenezes/cerebro:0.8.5
+        container_name: cerebro
+        ports:
+            - 8081:9000
+
+    kibana:
+        image: kibana:7.9.3
+        container_name: kibana
+        ports:
+            - 8082:5601
+        environment:
+            - ELASTICSEARCH_HOSTS=http://nodo1:9200

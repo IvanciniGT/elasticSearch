@@ -1,0 +1,65 @@
+FORMATOS DE INTERCAMBIO DE INFORMACION
+--------------------------------------
+csv: comma separated values
+Ivan, Osuna, Ayuste, 42, ivan@correo.es
+Hortensia, Garcia, Minguez, 26, hortensia@correo.es
+
+HTML : Hyper text markup language
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>SOY EL TITULO</h1>
+        <p>yo soy un parrafo</p>
+    </body>
+</html>
+
+XML: eXtensible Markup Language
+<usuarios>
+    <usuario>
+        <nombre> Ivan </nombre>
+        <primerApellido> Osuna </primerApellido>
+        <segundoApellido> Ayuste </segundoApellido>
+        <edad> 42 </edad>
+        <email> ivan@correo.es </email>
+    </usuario>
+    <usuario>
+        <nombre> Hortensia </nombre>
+        <primerApellido> Garcia </primerApellido>
+        <segundoApellido> Minguez </segundoApellido>
+        <edad> 26 </edad>
+        <email> hortensia@correo.es </email>
+    </usuario>
+</usuarios>
+
+JSON
+[
+    {
+        'nombre': 'Ivan',
+        'primerAprllido': 'Osuna,
+        'segundoApellido': 'Ayuste',
+        'edad': 42,
+        'email': 'ivan@correo.es'
+    },
+    {
+        'nombre': 'Hortensia',
+        'primerAprllido': 'Garcia,
+        'segundoApellido': 'Minguez',
+        'edad': 26,
+        'email': 'hortensia@correo.es'
+    }
+]
+
+YAML: YAML Ain't markup language
+
+- nombre: Ivan
+  primerAprllido: Osuna
+  segundoApellido: Ayuste
+  edad: 42
+  email: ivan@correo.es
+
+- nombre: Hortensia
+  primerAprllido: Garcia
+  segundoApellido: Minguez
+  edad: 26
+  email: hortensia@correo.es
