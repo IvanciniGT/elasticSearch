@@ -36,6 +36,7 @@ services: # Contenedores
             # Para que no mire límites (85% y 90%) a la hora de poner shards
             - cluster.routing.allocation.disk.threshold_enabled=false
             # Seguridad
+            #- xpack.security.enabled=true
             - ELASTIC_PASSWORD=password
             # Memoria RAM para el nodo 220 Mbs 
             - "ES_JAVA_OPTS=-Xms220m -Xmx220m"
@@ -111,7 +112,7 @@ services: # Contenedores
             # Seguridad
             - ELASTIC_PASSWORD=password        
             # Memoria RAM para el nodo 220 Mbs 
-            - "ES_JAVA_OPTS=-Xms220m -Xmx220m"
+            - "ES_JAVA_OPTS=-Xms220m -Xmx220m" ### Memoria de la MAQUINA VIRTUAL DE JAVA
     
     ingesta1:
         image: elasticsearch:7.9.3
@@ -166,7 +167,20 @@ services: # Contenedores
             - ELASTIC_PASSWORD=password        
             # Memoria RAM para el nodo 220 Mbs 
             - "ES_JAVA_OPTS=-Xms220m -Xmx220m"
-    
+            
+#            - xpack.license.self_generated.type=basic
+#            - xpack.security.enabled=true
+            
+#            - xpack.security.http.ssl.enabled=true #SSL1
+#            - xpack.security.http.ssl.key=/usr/share/elasticsearch/config/certificates/own/coordinador2.key
+#            - xpack.security.http.ssl.certificate_authorities=/usr/share/elasticsearch/config/certificates/ca/ca.crt
+#            - xpack.security.http.ssl.certificate=/usr/share/elasticsearch/config/certificates/own/coordinador2.crt
+            
+#            - xpack.security.transport.ssl.enabled=true #SSL2
+#            - xpack.security.transport.ssl.verification_mode=certificate 
+#            - xpack.security.transport.ssl.certificate_authorities=/usr/share/elasticsearch/config/certificates/ca/ca.crt
+#            - xpack.security.transport.ssl.certificate=/usr/share/elasticsearch/config/certificates/own/coordinador2.crt
+#            - xpack.security.transport.ssl.key=/usr/share/elasticsearch/config/certificates/own/coordinador2.key
     coordinador2:
         image: elasticsearch:7.9.3
         container_name: coordinador2
@@ -184,6 +198,7 @@ services: # Contenedores
             - ELASTIC_PASSWORD=password        
             # Memoria RAM para el nodo 220 Mbs 
             - "ES_JAVA_OPTS=-Xms220m -Xmx220m"
+   
         
     cerebro:
         image: lmenezes/cerebro:0.8.5
