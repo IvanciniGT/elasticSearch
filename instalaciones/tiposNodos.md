@@ -43,4 +43,45 @@ Tipos de nodos en elastic:
         Puede ejercer como datos: SI / NO
         Puede ejercer como ingesta: SI / NO
         ---> Puede ejercer como coordinacion: SI / NO (no se especifica)
+
+
+
+---------------------------
+
+REPLICAS: 
+    - Si hago una búsqueda tengo más potenciales sitios donde buscarlo.
+        Eso mejora la escalabilidad? SI ... mejora rendimiento
         
+    - Si doy de alta un dato
+        Los tiempos, mejoran o empeoran.....
+            Hay que mantener todas las replicas.
+                Nodos:   Tengo un indice y quiero 2 replicas de los datos
+                1 Principal  <- 5ms ---90 %
+                2 Replica 1  <- 5ms ---90 % .... se me demore en hacer el grabado
+                3 Replica 2  <- 5ms 
+            Lo podemos paliar... Desarrollador -> INSERT INDICE <- ACTUALIZADO
+                    cuando contesta ES ???
+                    En cuanto lo guardes en 1 nodo dame OK
+                    En cuanto lo guardes en 2 nodo dame OK
+                    Hasta que no lo tengas en todos los posible nodos no me de el OK
+
+----------------------------------------
+
+Cluster de elastic: En un entorno de producción
+    Maestros: 2
+    Datos:    2 (1 de ellos con decisión a voto)
+             +1
+        CPU 1 - 75%
+        CPU 2 - 75%
+        CPU 3 - 55%
+             +1 o +O todavia estoy bien
+            ESTOY JUGANDO CON FUEGO !!!!!!!!!!!!! Si pienso que tengo HA en esta 
+                situación estoy MUY EQUIVOCADO.
+        
+        El nodo 2 CRUJE... puffff!
+            CPU 1 <- 100%
+            CPU 3 <- 100%
+            Y aun así me falta capacidad de trabajo.... 
+            ---> Nodo 1 ... puf !!!!!
+            ------> Nodo 2  ... MEGA PUFFF !!!!
+            CAIDA EN CASCADA !!!!
