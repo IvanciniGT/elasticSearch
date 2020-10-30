@@ -85,3 +85,34 @@ Cluster de elastic: En un entorno de producción
             ---> Nodo 1 ... puf !!!!!
             ------> Nodo 2  ... MEGA PUFFF !!!!
             CAIDA EN CASCADA !!!!
+---------------------------------------
+Indice A 10 particiones
+Indice B 10 particiones
+Indice C 10 particiones
+    Datos 1:
+        CPU: 20%
+        HDD: 48%
+        RAM: 4Gbs - 16Gb
+            Indice A . 10 Primarias
+            Indice B . 5 replicas        +++++ 5 replicas
+            Indice C . 5 replicas        +++++ 5 replicas
+    Datos 2:
+        CPU: 20%
+        HDD: 45%
+        RAM: 4Gbs - 16Gb
+            Indice A . 5 replicas         ++++ 5 replicas 4Gbs
+            Indice B . 10 primarias
+            Indice C . 5 replicas         ++++ 5 replicas 4Gbs
+            PUEDO ESTAR JUGANDO CON FUEGO !!!!!!!!!!!!! Si pienso que tengo HA en esta 
+                situación puedo estar MUY EQUIVOCADO.  Que pasa con los HHD
+            Indices 20 Indices... 200Mbs Copias
+    Datos 3:
+        RAM: 4Gbs - 16Gb
+        CPU: 20%
+        HDD: 2%
+---            Indice A . 5 replicas
+---            Indice B . 5 replicas
+---            Indice C . 10 primarias
+   
+    Ni de coña!
+        Datos 3 cruje!

@@ -162,3 +162,85 @@ fecha: 1975
 
 Busquedas: se calcula un score
 Filtros <--- SI O NO --- No se calcula score
+
+----------------------------------------------
+
+doc1: Hola ... en un rato hacemos el examen.... que miedo uuhhh!!!!
+doc2: Hola ... en un rato seguro aprobais el examen.... ;)
+
+--> Indice
+termino        ubicación
+hola        -> doc 1: titulo: pos 3     doc 2: concepto: 17
+rato        -> doc 1 doc 2
+hacemos     -> doc 1
+examen      -> doc 1 doc 2
+miedo       -> doc 1
+seguro      -> doc 2
+aprobais    -> doc2
+
+
+0              0
+En las primeras cargas ... irían creciendo ambos, pero de manera no muy dirferente
++ tiempo
++ tiempo
+En un momento dado SOLO deben crecer las ubicaciones... los terminos casi no crecerán
+
+Operaciones en un banco asociadas a un DNI
+DNI: 100.000.000 millones
+DNI: 1000000000000000000000 millones
+
+
+PARTICIONES DEL INDICE
+Particion 1 <--- Operaciones realizadas los martes... En los ficheros de la Part 1
+    100000000 Millones de DNIS pueden estar en todas las particiones
+    DNI
+Particion 2 <--- Operaciones realizadas otros dias... En los ficheros de la Part 2
+    100000000 Millones de DNIS pueden estar en todas las particiones
+
+Lo que ocupan los datos del indice: 
+    Terminos :    100Mb
+    Ubicaciones : 500Mb
+                ---------
+                  600 Mb ---> Fichero ----> RAM
+2 particiones:
+    Particion 1: 
+        Terminos :    80Mb
+        Ubicaciones : 100Mb
+                     ------
+                      200Mb
+    Particion 2: 
+        Terminos :    80Mb
+        Ubicaciones : 100Mb
+    Particion 3: 
+        Terminos :    80Mb
+        Ubicaciones : 100Mb
+    Particion 4: 
+        Terminos :    80Mb
+        Ubicaciones : 100Mb
+    Particion 5: 
+        Terminos :    80Mb
+        Ubicaciones : 100Mb
+        
+                    ---------
+                     1000 Mb ---> Fichero ----> RAM
+    
+    
+
+---------------------------
+DNI: 12345L                 Keyword
+Importe: 534                Number
+Concepto: Compra en Amazon  TEXT
+Fechas: 10 Enero de 2019    Fecha
+Hora: 15:27                 Hora
+Estado: Finalziada          Keyword
+---------------------
+S1 .----> DNI <50000
+Compra
+Amazon
+Enero
+Finalizado
+S1 .----> DNI >50000
+Compra  
+Amazon
+Enero
+Finalizado
